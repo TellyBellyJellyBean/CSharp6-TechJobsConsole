@@ -144,14 +144,14 @@ namespace TechJobsConsoleAutograded6
             {
             foreach (Dictionary<string, string> job in someJobs)
                 {
-                Console.WriteLine(asterisk);
+                Console.WriteLine(nl + asterisk);
                 foreach (KeyValuePair<string, string> jobDataValue in job) 
                     {
                 
-                    Console.WriteLine(jobDataValue.Value);
+                    Console.WriteLine(jobDataValue.Key + ": " + jobDataValue.Value);
                     
                     }
-                Console.WriteLine(asterisk + nl);
+                Console.WriteLine(asterisk);
                 }
             }
             else    
