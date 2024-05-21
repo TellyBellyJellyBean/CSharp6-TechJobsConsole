@@ -61,12 +61,13 @@ namespace TechJobsConsoleAutograded6
 
                     // What is their search term?
                     Console.WriteLine(Environment.NewLine + "Search term: ");
-                    string searchTerm = Console.ReadLine();
+                    string searchTerm = Console.ReadLine().ToLower(); //potentially where to make input case insensitive 
 
                     // Fetch results
                     if (columnChoice.Equals("all"))
                     {
-                        Console.WriteLine("Search all fields not yet implemented.");
+                        List<Dictionary<string, string>> allJobsByTerm = JobData.FindByValue(searchTerm);
+                        PrintJobs(allJobsByTerm);
                     }
                     else
                     {

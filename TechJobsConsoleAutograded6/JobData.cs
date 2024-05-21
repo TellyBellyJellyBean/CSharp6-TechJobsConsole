@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Data;
 using System.Text;
 
 namespace TechJobsConsoleAutograded6
@@ -41,14 +43,37 @@ namespace TechJobsConsoleAutograded6
          * Search all columns for the given term
          */
 
-        //TODO: Complete the FindByValue method
+        //TODO: Complete the FindByValue method                     //Added string column here to try things out
         public static List<Dictionary<string, string>> FindByValue(string value)
         {
-            // load data, if not already loaded
             LoadData();
+            List<Dictionary<string, string>> matchingJobs = new List<Dictionary<string, string>>();
+            
+            foreach (Dictionary<string, string> row in AllJobs)
+            {
+                
+                
+                // foreach (KeyValuePair<string, string> keyword in row)
+                // {
+                    
+                // }
+                foreach (string matchingKeyTerm in row.Values)
+                {
+                    if (value is string Value && matchingKeyTerm.ToLower().Contains(Value.ToLower()))
+                    {
+                        matchingJobs.Add(row);
+                    }
+                }
 
-            return null;
+            if (string.IsNullOrEmpty(value))
+            {
+                return new List<Dictionary<string, string>>();
+            }
+            }
+
+        return matchingJobs;
         }
+
 
         /**
          * Returns results of search the jobs data by key/value, using
@@ -66,11 +91,11 @@ namespace TechJobsConsoleAutograded6
 
             foreach (Dictionary<string, string> row in AllJobs)
             {
-                string aValue = row[column];
+                string aValue = row[column].ToLower();
 
 
                 //TODO: Make search case-insensitive
-                if (aValue.Contains(value))
+                if (aValue.Contains(value.ToLower()))
                 {
                     jobs.Add(row);
                 }
